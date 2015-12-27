@@ -25,6 +25,8 @@ App = React.createClass({
     getMeteorData() {
         return {
             tasks: Tasks.find({}).fetch()
+            // TODO: Lab3 - replace basic find with a sort by date with newest at top
+            //tasks: Tasks.find({}, {sort: {createdAt: -1}}).fetch()
         }
     },
 
