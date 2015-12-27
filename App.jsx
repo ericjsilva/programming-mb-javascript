@@ -2,38 +2,38 @@
 App = React.createClass({
 
     // Lab 1 = hard coded list
-    getTasks() {
-        return [
-            { _id: 1, text: "This is task 1" },
-            { _id: 2, text: "This is task 2" },
-            { _id: 3, text: "This is task 3" }
-        ];
-    },
-
-    renderTasks() {
-        return this.getTasks().map((task) => {
-            return <Task key={task._id} task={task} />;
-        });
-    },
+    //getTasks() {
+    //    return [
+    //        { _id: 1, text: "This is task 1" },
+    //        { _id: 2, text: "This is task 2" },
+    //        { _id: 3, text: "This is task 3" }
+    //    ];
+    //},
+    //
+    //renderTasks() {
+    //    return this.getTasks().map((task) => {
+    //        return <Task key={task._id} task={task} />;
+    //    });
+    //},
 
     // TODO: Lab2 - Use database for tasks
 
     // This mixin makes the getMeteorData method work
-    //mixins: [ReactMeteorData],
-    //
-    //// Loads items from the Tasks collection and puts them on this.data.tasks
-    //getMeteorData() {
-    //    return {
-    //        tasks: Tasks.find({}).fetch()
-    //    }
-    //},
-    //
-    //renderTasks() {
-    //    // Get tasks from this.data.tasks
-    //    return this.data.tasks.map((task) => {
-    //        return <Task key={task._id} task={task} />;
-    //    });
-    //},
+    mixins: [ReactMeteorData],
+
+    // Loads items from the Tasks collection and puts them on this.data.tasks
+    getMeteorData() {
+        return {
+            tasks: Tasks.find({}).fetch()
+        }
+    },
+
+    renderTasks() {
+        // Get tasks from this.data.tasks
+        return this.data.tasks.map((task) => {
+            return <Task key={task._id} task={task} />;
+        });
+    },
 
     // TODO: Lab3 - enable Add New Task form
 
